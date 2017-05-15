@@ -21,13 +21,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.netflix.hystrix.HystrixConstants;
 import org.springframework.http.MediaType;
 
-import lombok.Data;
-
 /**
  * @author Dave Syer
  */
 @ConfigurationProperties("turbine.stream")
-@Data
 public class TurbineStreamProperties {
 
 	@Value("${server.port:8989}")
@@ -36,4 +33,29 @@ public class TurbineStreamProperties {
 	private String destination = HystrixConstants.HYSTRIX_STREAM_DESTINATION;
 
 	private String contentType = MediaType.APPLICATION_JSON_VALUE;
+
+	public int getPort() {
+		return port;
+	}
+
+	public void setPort(int port) {
+		this.port = port;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
+
 }

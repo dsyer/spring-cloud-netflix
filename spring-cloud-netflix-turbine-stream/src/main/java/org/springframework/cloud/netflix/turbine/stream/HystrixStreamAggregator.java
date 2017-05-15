@@ -20,23 +20,26 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import lombok.extern.apachecommons.CommonsLog;
 import rx.subjects.PublishSubject;
 
 /**
  * @author Spencer Gibb
  */
-@CommonsLog
 @Component // needed for ServiceActivator to be picked up
 public class HystrixStreamAggregator {
+
+	private static Log log = LogFactory.getLog(HystrixStreamAggregator.class);
 
 	private ObjectMapper objectMapper;
 
